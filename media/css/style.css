@@ -352,32 +352,33 @@ body {
 	margin: 52px 0 26px 0;
 }
 
-.form .form__group {
-	margin-bottom: 20px;
-}
-.form .form__group:last-child {
-	margin-bottom: 0;
+.form {
+	max-width: 400px;
+	margin-bottom: 40px;
 }
 
-.form .form__control {
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input,
+textarea {
 	width: 100%;
-	padding: 10px;
-	font-size: 16px;
-	outline: none;
+	padding: 8px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
 }
 
-.form textarea.form__control {
-	min-height: 100px;
-}
-
-.form input[type='submit'].form__control {
-	background-color: black;
+button {
+	background-color: #4caf50;
 	color: white;
-	border: 3px solid white;
-	width: 250px;
-	opacity: 0.7;
-}
-.form input[type='submit'].form__control:hover {
+	padding: 10px;
+	border: none;
 	cursor: pointer;
-	opacity: 1;
+	border-radius: 5px;
+}
+
+button:hover {
+	background-color: #45a049;
 }

@@ -18,6 +18,8 @@ if (!empty($_GET['id'])){
       $open_category = $category['title'];
     }
   };
+} else {
+  $category_id = '';
 }
 
 
