@@ -1,10 +1,9 @@
 // plugins: {
 //   // tailwindcss: {},
 //   // autoprefixer: {},
-//   // other PostCSS plugins if you have any
 // },
 
-const plugins = ['tailwindcss', 'autoprefixer'];
+const plugins = ['tailwindcss'];
 
 export default {
   plugins,
