@@ -3,7 +3,7 @@
 //   // autoprefixer: {},
 // },
 
-const plugins = ['tailwindcss'];
+const plugins = ['tailwindcss', 'autoprefixer'];
 
 export default {
   plugins,
