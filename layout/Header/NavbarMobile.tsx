@@ -42,7 +42,7 @@ const NavbarMobile = () => {
   return (
     <Sheet>
       <SheetTrigger className="sm:hidden">
-        <span className="relative block h-[2px] w-[18px] bg-dark-200 before:absolute before:bottom-2 before:left-0 before:size-full before:bg-dark-200 after:absolute after:left-0 after:top-2 after:size-full after:bg-dark-200 dark:bg-light-700 dark:before:bg-light-700 dark:after:bg-light-700"></span>
+        <span className="relative block h-[3px] w-[21px] bg-dark-200 before:absolute before:bottom-2 before:left-0 before:size-full before:bg-dark-200 after:absolute after:left-0 after:top-2 after:size-full after:bg-dark-200 dark:bg-light-700 dark:before:bg-light-700 dark:after:bg-light-700"></span>
       </SheetTrigger>
       <SheetContent side="left" className="background-light900_dark200 border-none">
         <Link href="/" className="flex items-center gap-1">

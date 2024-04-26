@@ -17,24 +17,25 @@ function Header() {
         </p>
       </Link>
       <Search />
-      <div className="flex-between gap-5">
-        <Theme />
-
-        <SignedIn>
-          <UserButton
-            afterSignOutUrl="/"
-            appearance={{
-              elements: {
-                avatarBox: 'h-10 w-10',
-              },
-              variables: {
-                colorPrimary: '#ff7000',
-              },
-            }}
-          />
-        </SignedIn>
+      <div className="flex gap-6">
+        <div className="flex-between gap-5">
+          <Theme />
+          <SignedIn>
+            <UserButton
+              afterSignOutUrl="/"
+              appearance={{
+                elements: {
+                  avatarBox: 'h-10 w-10',
+                },
+                variables: {
+                  colorPrimary: '#ff7000',
+                },
+              }}
+            />
+          </SignedIn>
+        </div>
+        <NavbarMobile />
       </div>
-      <NavbarMobile />
     </header>
   );
 }
