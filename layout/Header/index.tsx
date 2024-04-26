@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import Theme from './Theme';
+import NavbarMobile from './NavbarMobile';
+import Search from '@/components/Search';
 
 function Header() {
   return (
@@ -14,7 +16,7 @@ function Header() {
           <span className="text-primary-500">Overflow</span>
         </p>
       </Link>
-      Global Search
+      <Search />
       <div className="flex-between gap-5">
         <Theme />
 
@@ -32,6 +34,7 @@ function Header() {
           />
         </SignedIn>
       </div>
+      <NavbarMobile />
     </header>
   );
 }
