@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} h-screen overflow-hidden`}>
         <ClerkProvider
           appearance={{
             elements: {
@@ -42,7 +42,7 @@ export default function RootLayout({
           }}
         >
           <ThemeProvider>{children}</ThemeProvider>
-        </ClerkProvider>{' '}
+        </ClerkProvider>
       </body>
     </html>
   );
