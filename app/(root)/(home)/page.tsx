@@ -1,3 +1,5 @@
+import Search from '@/components/Search';
+import TagBadge from '@/components/TagBadge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
@@ -9,6 +11,11 @@ export default function Home() {
         <Link href="/" className="block w-full max-w-full sm:w-auto">
           <Button className="primary-gradient base-bold w-full text-light-900">Ask a Question</Button>
         </Link>
+      </div>
+      <Search className="mb-6 max-w-full" />
+      <div className="flex gap-5">
+        <TagBadge active={true}>Newest</TagBadge>
+        <TagBadge>Recommended Questions</TagBadge>
       </div>
     </>
   );
