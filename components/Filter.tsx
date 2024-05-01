@@ -6,15 +6,16 @@ import { useSearchParams } from 'next/navigation';
 
 interface IProps {
   items: { name: string; value: string }[];
+  className?: string;
 }
 
-const Filter = ({ items }: IProps) => {
+const Filter = ({ items, className }: IProps) => {
   const searchParams = useSearchParams();
   const search = searchParams.get('filter');
 
   return (
     <>
-      <div className="hidden flex-wrap gap-5 sm:flex">
+      <div className={'hidden flex-wrap gap-5 sm:flex ' + className}>
         {items.map((e) => (
           <TagBadge active={e.value === search} key={e.value} href={'?filter=' + e.value}>
             {e.name}
