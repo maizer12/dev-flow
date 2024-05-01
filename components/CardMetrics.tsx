@@ -11,23 +11,23 @@ const CardMetrics = ({ userName, createDate, votes, answers, views }: IProps) =>
     <div className="flex justify-between">
       <div className="flex items-center gap-2">
         <Image src="/assets/icons/avatar.png" width={20} height={20} alt="User avatar" />
-        <p className="body-medium relative  pr-3 font-inter font-bold text-dark-400 after:absolute after:right-0 after:top-1.5 after:size-1.5 after:rounded-lg after:bg-dark-400">
+        <p className="body-medium relative  pr-3 font-inter font-bold text-dark-400 after:absolute after:right-0 after:top-1.5 after:size-1.5 after:rounded-lg after:bg-dark-400 dark:text-light-700 dark:after:bg-light-700">
           {userName}
         </p>
-        <p className="body-regular font-inter text-dark-400">{timeAgo(createDate)}</p>
+        <p className="body-regular font-inter text-dark-400 dark:text-light-700">{timeAgo(createDate)}</p>
       </div>
       <div className="flex">
-        <p className="body-medium flex  items-center gap-1 pr-3 font-inter text-dark-400">
+        <p className="body-medium flex  items-center gap-1 pr-3 font-inter text-dark-400 dark:text-light-700">
           <ThumbsUp width={14} className="text-blue-400" />
           {votes}
           <span className="font-normal">Votes</span>
         </p>
-        <p className="body-medium flex  items-center gap-1 pr-3 font-inter text-dark-400">
+        <p className="body-medium flex  items-center gap-1 pr-3 font-inter text-dark-400 dark:text-light-700">
           <MessageCircle width={14} className="text-blue-400" />
           {answers}
           <span className="font-normal">Answers</span>
         </p>
-        <p className="body-medium flex  items-center gap-1 pr-3 font-inter text-dark-400">
+        <p className="body-medium flex  items-center gap-1 pr-3 font-inter text-dark-400 dark:text-light-700">
           <Eye width={14} className="text-blue-400" />
           {views}
           <span className="font-normal">Views</span>
