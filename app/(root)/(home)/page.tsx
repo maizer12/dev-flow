@@ -1,6 +1,7 @@
 import Filter from '@/components/Filter';
 import Search from '@/components/Search';
 import { Button } from '@/components/ui/button';
+import { HomePageFilters } from '@/constants/filters';
 import Link from 'next/link';
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
         </Link>
       </div>
       <Search className="mb-6 !block max-w-full border-light-700" />
-      <Filter />
+      <Filter items={HomePageFilters} />
     </>
   );
 }
