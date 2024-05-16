@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
+import { createQuestion } from '@/lib/actions/question.action';
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -34,12 +35,13 @@ const AskForm = ({ edit }: IProps) => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSend(true);
     console.log(values);
 
     try {
       console.log(465);
+      await createQuestion();
     } catch (e) {
     } finally {
       setIsSend(false);
