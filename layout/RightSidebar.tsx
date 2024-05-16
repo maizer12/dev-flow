@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const RightSidebar = () => {
   return (
-    <aside className="background-light900_dark200 light-border hidden h-screen flex-col border-l px-3 pb-3.5 pt-36 shadow-light-300 dark:border-none dark:shadow-none sm:px-6 sm:pb-7 lg:flex lg:w-[330px]">
+    <aside className="background-light900_dark200 light-border sticky top-0 hidden h-screen flex-col border-l px-3 pb-3.5 pt-36 shadow-light-300 dark:border-none dark:shadow-none sm:px-6 sm:pb-7 lg:flex lg:w-[330px]">
       <div className="h-3/6">
         <h3 className="h3-bold mb-6 font-inter text-dark-200 dark:text-light-900">Hot Network</h3>
 

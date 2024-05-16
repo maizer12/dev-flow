@@ -1,10 +1,10 @@
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Editor } from '@tinymce/tinymce-react';
 import { Button } from '@/components/ui/button';
-import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -19,8 +19,12 @@ const formSchema = z.object({
   }),
   tags: z.array(z.string().min(1)).max(15).min(1).max(3),
 });
+interface IProps {
+  edit: boolean;
+}
 
-const AskForm = () => {
+const AskForm = ({ edit }: IProps) => {
+  const [isSend, setIsSend] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,9 +35,15 @@ const AskForm = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+    setIsSend(true);
     console.log(values);
+
+    try {
+      console.log(465);
+    } catch (e) {
+    } finally {
+      setIsSend(false);
+    }
   }
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: { name: string; value: string[] }) => {
     if (e.key === 'Enter' && field.name === 'tags') {
@@ -66,6 +76,14 @@ const AskForm = () => {
 
     form.setValue('tags', newTags);
   };
+
+  const btnText = () => {
+    if (isSend) return 'Sending...';
+    if (edit) return 'Edit Question';
+
+    return 'Ask a Question';
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -196,7 +214,7 @@ const AskForm = () => {
           )}
         />
         <Button type="submit" className="primary-gradient base-bold ml-auto  mt-12 block w-fit text-light-900">
-          Ask a Question
+          {btnText()}
         </Button>
       </form>
     </Form>

@@ -16,7 +16,7 @@ const Sidebar = () => {
     (pathname.includes(item.route) && item.route.length > 1) || pathname === item.route;
 
   return (
-    <aside className="background-light900_dark200 light-border hidden h-screen flex-col border-r px-3 pb-3.5 pt-36 shadow-light-300 dark:border-none dark:shadow-none sm:flex sm:px-6 sm:pb-7 lg:w-[266px]">
+    <aside className="background-light900_dark200 light-border sticky top-0 hidden h-screen flex-col border-r px-3 pb-3.5 pt-36 shadow-light-300 dark:border-none dark:shadow-none sm:flex sm:px-6 sm:pb-7 lg:w-[266px]">
       {sidebarLinks.map((item) => (
         <Link
           key={item.route}
