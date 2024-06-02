@@ -9,10 +9,9 @@ import { Badge } from '@/components/ui/badge';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
-import { createQuestion } from '@/lib/actions/question.action';
 
 const formSchema = z.object({
-  username: z.string().min(2, {
+  title: z.string().min(2, {
     message: 'Username must be at least 2 characters.',
   }),
   answer: z.string().min(2, {
@@ -22,14 +21,15 @@ const formSchema = z.object({
 });
 interface IProps {
   edit: boolean;
+  userId: string;
 }
 
-const AskForm = ({ edit }: IProps) => {
+const AskForm = ({ edit, userId }: IProps) => {
   const [isSend, setIsSend] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: '',
+      title: '',
       answer: '',
       tags: [],
     },
@@ -37,15 +37,8 @@ const AskForm = ({ edit }: IProps) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSend(true);
+    console.log(456);
     console.log(values);
-
-    try {
-      console.log(465);
-      await createQuestion();
-    } catch (e) {
-    } finally {
-      setIsSend(false);
-    }
   }
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: { name: string; value: string[] }) => {
     if (e.key === 'Enter' && field.name === 'tags') {
@@ -91,7 +84,7 @@ const AskForm = ({ edit }: IProps) => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
-          name="username"
+          name="title"
           render={({ field }) => (
             <FormItem className="mb-9">
               <FormLabel className="paragraph-semibold font-inter font-bold text-dark-400">
