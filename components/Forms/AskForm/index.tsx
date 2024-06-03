@@ -1,6 +1,6 @@
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Editor } from '@tinymce/tinymce-react';
@@ -9,6 +9,8 @@ import { Badge } from '@/components/ui/badge';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
+import { createQuestion } from '@/lib/actions/question.action';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -21,10 +23,12 @@ const formSchema = z.object({
 });
 interface IProps {
   edit: boolean;
-  userId: string;
+  user: string;
 }
 
-const AskForm = ({ edit, userId }: IProps) => {
+const AskForm = ({ edit, user }: IProps) => {
+  const router = useRouter();
+  const editorRef = useRef('');
   const [isSend, setIsSend] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,8 +41,16 @@ const AskForm = ({ edit, userId }: IProps) => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSend(true);
-    console.log(456);
-    console.log(values);
+    try {
+      const { answer: content, ...data } = values;
+      const res = { ...data, content, author: JSON.parse(user) };
+      await createQuestion(res);
+      router.push('/');
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsSend(false);
+    }
   }
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: { name: string; value: string[] }) => {
     if (e.key === 'Enter' && field.name === 'tags') {
@@ -115,10 +127,10 @@ const AskForm = ({ edit, userId }: IProps) => {
               <FormControl className="mt-3.5">
                 <Editor
                   apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
-                  // onInit={(evt, editor) => {
-                  //   //    @ts-ignore
-                  //   editorRef.current = editor;
-                  // }}
+                  onInit={(evt, editor) => {
+                    //    @ts-ignore
+                    editorRef.current = editor;
+                  }}
                   onBlur={field.onBlur}
                   onEditorChange={(content) => field.onChange(content)}
                   initialValue=""
