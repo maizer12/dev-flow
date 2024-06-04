@@ -4,12 +4,12 @@ import Filter from '@/components/Filter';
 import Search from '@/components/Search';
 import { Button } from '@/components/ui/button';
 import { HomePageFilters } from '@/constants/filters';
-import { IAsk } from '@/types/Ask.type';
+import { getQuestion } from '@/lib/actions/question.action';
 import Link from 'next/link';
 
-const questions: IAsk[] = [];
+export default async function Home() {
+  const questions = await getQuestion({});
 
-export default function Home() {
   return (
     <>
       <div className="mb-8 flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">

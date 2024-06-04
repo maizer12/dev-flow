@@ -45,7 +45,7 @@ const AskForm = ({ edit, user }: IProps) => {
       const { answer: content, ...data } = values;
       const res = { ...data, content, author: JSON.parse(user) };
       await createQuestion(res);
-      router.push('/');
+      // router.push('/');
     } catch (err) {
       console.log(err);
     } finally {
