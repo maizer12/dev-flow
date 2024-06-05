@@ -12,26 +12,28 @@ export interface IQuestion extends Document {
   createdAt: Date;
 }
 
-const QuestionSchema = new Schema<IQuestion>({
-  title: {
-    type: String,
-    required: true,
+const QuestionSchema = new Schema<IQuestion>(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    tags: [{ type: Schema.Types.ObjectId, ref: 'Tag', default: [] }],
+    views: {
+      type: Number,
+      default: 0,
+    },
+    upvotes: [{ type: Schema.Types.ObjectId, ref: 'User', default: [] }],
+    downvotes: [{ type: Schema.Types.ObjectId, ref: 'User', default: [] }],
+    author: { type: Schema.Types.ObjectId, ref: 'User' },
+    answers: [{ type: Schema.Types.ObjectId, ref: 'Answer', default: [] }],
   },
-  content: {
-    type: String,
-    required: true,
-  },
-  tags: [{ type: Schema.Types.ObjectId, ref: 'Tag', default: [] }],
-  views: {
-    type: Number,
-    default: 0,
-  },
-  upvotes: [{ type: Schema.Types.ObjectId, ref: 'User', default: [] }],
-  downvotes: [{ type: Schema.Types.ObjectId, ref: 'User', default: [] }],
-  author: { type: Schema.Types.ObjectId, ref: 'User' },
-  answers: [{ type: Schema.Types.ObjectId, ref: 'Answer', default: [] }],
-  createdAt: { type: Date },
-});
+  { timestamps: true },
+);
 
 const Question = models.Question || model('Question', QuestionSchema);
 

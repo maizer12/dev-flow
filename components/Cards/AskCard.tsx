@@ -17,7 +17,7 @@ const AskCard = ({ item }: IProps) => {
           <TagBadge key={i}>{tag.name}</TagBadge>
         ))}
       </div>
-      {/* <CardMetrics {...item} /> */}
+      <CardMetrics {...item} />
     </div>
   );
 };
