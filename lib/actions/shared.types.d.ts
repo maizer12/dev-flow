@@ -7,3 +7,11 @@ export interface CreateQuestionParams {
   tags: string[];
   path: string;
 }
+
+export interface CreateUserParams {
+  clerkId: string;
+  name: string;
+  userName: string;
+  email: string;
+  picture: string;
+}
