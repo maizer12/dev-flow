@@ -8,10 +8,19 @@ export interface CreateQuestionParams {
   path: string;
 }
 
-export interface CreateUserParams {
-  clerkId: string;
+interface UserDB {
   name: string;
   userName: string;
   email: string;
   picture: string;
+}
+
+export interface CreateUserParams extends UserDB {
+  clerkId: string;
+}
+
+export interface UpdateUserParams {
+  clerkId: string;
+  updateDate: UserDB;
+  path: string;
 }

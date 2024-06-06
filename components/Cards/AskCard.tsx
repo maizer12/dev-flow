@@ -8,7 +8,6 @@ interface IProps {
 }
 
 const AskCard = ({ item }: IProps) => {
-  console.log(item.tags);
   return (
     <div className="card-wrapper light-border-2 rounded-lg border px-12 py-9">
       <h3 className="h3-bold mb-4 dark:text-light-900">{item.title}</h3>
