@@ -21,7 +21,11 @@ export const createUser = async (userData: CreateUserParams) => {
   try {
     await connectToDB();
 
+    console.log('run model');
+
     const user = await User.create(userData);
+
+    console.log('create');
 
     return user;
   } catch (err) {
