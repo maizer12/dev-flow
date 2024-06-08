@@ -48,7 +48,7 @@ const Sidebar = () => {
           </SignOutButton>
         ) : (
           <>
-            <Link href="/sing-in" className="mb-6 block">
+            <Link href="/sign-in" className="mb-6 block">
               <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
                 <Image
                   src="/assets/icons/sign-up.svg"
@@ -60,7 +60,7 @@ const Sidebar = () => {
                 <span className="primary-text-gradient hidden lg:block">Log In</span>
               </Button>
             </Link>
-            <Link href="/sing-in">
+            <Link href="/sign-in">
               <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
                 <span className="hidden lg:block">Sign Up</span>
                 <Image
